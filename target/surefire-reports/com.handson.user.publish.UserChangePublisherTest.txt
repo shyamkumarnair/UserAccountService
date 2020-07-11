@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.handson.user.publish.UserChangePublisherTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.09 s - in com.handson.user.publish.UserChangePublisherTest

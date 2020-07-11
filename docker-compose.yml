@@ -1,0 +1,10 @@
+version: '2.0'
+services:
+   queue:
+     image: skp/activemq:5.15
+   backend:
+     image: skp/springboot-usermgmtsrvc:1.0
+     ports:
+       - "8080:8080"
+     depends_on :
+       - queue
