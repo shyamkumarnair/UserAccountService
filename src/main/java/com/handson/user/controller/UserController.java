@@ -17,6 +17,7 @@ import com.handson.user.publish.UserChangePublisher;
 import com.handson.user.response.Response;
 import com.handson.user.search.SearchParam;
 import com.handson.user.service.UserAccountManagementService;
+import com.handson.user.util.PasswordUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +30,9 @@ public class UserController {
 
 	@Autowired
 	UserChangePublisher publisher;
+
+	@Autowired
+	PasswordUtil passwordUtil;
 
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
@@ -62,6 +66,7 @@ public class UserController {
 	@PostMapping("/users")
 	public Response addUser(@RequestBody User user) {
 		log.info(String.format("Add new user - [%s]", user));
+		encryptPassword(user);
 		return userAccountService.save(user);
 	}
 
@@ -69,6 +74,7 @@ public class UserController {
 	@PutMapping("/users")
 	public Response modifyUser(@RequestBody User user) {
 		log.info(String.format("Modify user - [%s]", user));
+		encryptPassword(user);
 		return userAccountService.update(user.getId(), user);
 	}
 
@@ -77,5 +83,9 @@ public class UserController {
 	public Response deleteUser(@PathVariable int userId) {
 		log.info(String.format("Delete user - [%d]", userId));
 		return userAccountService.delete(userId);
+	}
+
+	private void encryptPassword(User user) {
+		user.setPassword(passwordUtil.encryptPassword(user.getPassword()).orElse(null));
 	}
 }

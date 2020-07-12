@@ -19,36 +19,36 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ApiModelProperty(notes = "User Identifier")
 	private Integer id;
-	
+
 	@JsonProperty(value = "firstName")
 	@Column(name = "firstName", nullable = false)
 	@ApiModelProperty(notes = "User first name, cannot be null")
 	@NotNull
 	private String firstName;
-	
+
 	@JsonProperty(value = "lastName")
 	@Column(name = "lastName", nullable = false)
 	@ApiModelProperty(notes = "User last name, cannot be null")
 	@NotNull
 	private String lastName;
-	
+
 	@JsonProperty(value = "nickName")
 	@Column(name = "nickName", nullable = true)
 	@ApiModelProperty(notes = "User nick name")
 	private String nickName;
-	
+
 	@JsonProperty(value = "password")
-	@Column(name = "password",  nullable = false)
+	@Column(name = "password", nullable = false)
 	@ApiModelProperty(notes = "User password")
 	@NotNull
 	private String password;
-	
+
 	@JsonProperty(value = "email")
 	@Column(name = "email", nullable = false)
 	@ApiModelProperty(notes = "User email id")
 	@NotNull
 	private String email;
-	
+
 	@JsonProperty(value = "country")
 	@Column(name = "country", nullable = false)
 	@ApiModelProperty(notes = "User country, cannot be null")
@@ -143,7 +143,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", nickName=" + nickName
-				+ ", password=" + password + ", email=" + email + ", country=" + country + "]";
+				+ ", email=" + email + ", country=" + country + "]";
 	}
 
 	@Override
@@ -156,7 +156,6 @@ public class User {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((nickName == null) ? 0 : nickName.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
 
@@ -199,12 +198,8 @@ public class User {
 				return false;
 		} else if (!nickName.equals(other.nickName))
 			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
+
 		return true;
 	}
-	
+
 }
