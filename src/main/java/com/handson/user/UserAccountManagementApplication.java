@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestSampleOneApplication {
+public class UserAccountManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestSampleOneApplication.class, args);
+		SpringApplication.run(UserAccountManagementApplication.class, args);
 	}
 
 }

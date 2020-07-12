@@ -29,7 +29,7 @@ import com.handson.user.response.Response;
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @TestPropertySource(locations = "classpath:application-test.properties")
-class RestSampleOneApplicationTests {
+class UserAccountManagementApplicationTests {
 
 	@Autowired
 	MockMvc mockMvc;
