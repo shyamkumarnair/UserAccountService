@@ -238,7 +238,7 @@ class UserAccountManagementApplicationTests {
 			fixture.thenDoResponseMapping();
 			fixture.verifyStatus();
 			fixture.verifyResponseStatus(HttpStatus.BAD_REQUEST.name());
-			fixture.verifyResponseMessage("failure : Could not find user with id 102");
+			fixture.verifyResponseMessage("failure : user id not present");
 			fixture.verifyResultIsEmpty();
 		} catch (Exception e) {
 			e.printStackTrace();

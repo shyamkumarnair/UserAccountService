@@ -195,7 +195,8 @@ class UserAccountManagementServiceTest {
 		}
 
 		public void whenServiceFindAllCalled_thenthrowError() {
-			when(mockUserRepository.findAll()).thenThrow(new UserNotFoundException(user.getId()));
+			when(mockUserRepository.findAll())
+					.thenThrow(new UserNotFoundException(user.getId() + "not found", new Exception("No such user")));
 		}
 
 		public void callSearchService() {
@@ -273,14 +274,14 @@ class UserAccountManagementServiceTest {
 		}
 
 		public void thenConfirmFindByIdFailureResponse() {
-			assertEquals("failure : User not found", response.getMessage());
+			assertEquals("failure : No such user", response.getMessage());
 			assertEquals(HttpStatus.BAD_REQUEST.name(), response.getStatus());
 			assertTrue(response.getResult().size() == 0);
 		}
 
 		public void thenConfirmSearchFailureResponse() {
-			assertEquals("failure : Could not find user with id 3", response.getMessage());
-			assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.name(), response.getStatus());
+			assertEquals("failure : No such user", response.getMessage());
+			assertEquals(HttpStatus.BAD_REQUEST.name(), response.getStatus());
 			assertTrue(response.getResult().size() == 0);
 		}
 
