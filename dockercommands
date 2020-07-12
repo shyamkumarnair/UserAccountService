@@ -1,6 +1,0 @@
-sudo docker build -f ./Dockerfile -t skp/activemq:5.15 .
-sudo docker run --name myactivemq -d skp/activemq:5.15
-
-sudo docker build  -t skp/springboot-usermgmtsrvc:1.0 .
-sudo docker run --name usrmgmtsrvc -p 8080:8080  skp/springboot-usermgmtsrvc:1.0
-
