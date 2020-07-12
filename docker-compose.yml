@@ -1,10 +1,25 @@
-version: '2.0'
+version: '3'
 services:
    queue:
+     container_name: activemq-broker
      image: skp/activemq:5.15
+     build:
+       context: ./ActiveMQContainer
+       dockerfile: ./ActiveMQContainer/Dockerfile
+     restart: on-failure
+     ports:
+       - "8161:8161"
+       - "61616:61616"
    backend:
-     image: skp/springboot-usermgmtsrvc:1.0
+     container_name: usrmgmtsrvc
+     image: skp/usrmgmtsrvc:1.0
+     build:
+       context: ./
+       dockerfile: Dockerfile
+     volumes:
+       - /data/usermgmtsrvc
+     restart: on-failure
      ports:
        - "8080:8080"
-     depends_on :
+     depends_on:
        - queue
